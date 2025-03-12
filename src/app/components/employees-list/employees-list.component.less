@@ -1,0 +1,59 @@
+@import '../../../styles/global.less';
+
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: unset;
+}
+
+.employee-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 10px;
+}
+
+.main-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  background-color: #D5F0FD;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.info-row label {
+  width: 100px;
+  font-weight: @bold-weight;
+  text-align: left;
+  @media (max-width: 768px) {
+    width: 60px;
+  }
+}
+
+.info-row span {
+  flex-grow: 1;
+  text-align: left;
+  @media (max-width: 768px) {
+    text-align: right;
+  }
+}
+
+

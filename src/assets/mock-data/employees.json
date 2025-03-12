@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Sample Employee 1",
+    "birthDate": "1990-05-10",
+    "hasCar": true,
+    "address": "Athens, Greece",
+    "coordinates": { "lat": 38.95572395969108, "lng": 20.740496265214976 },
+    "attribute": { "id": 1, "description": "Senior" }
+  },
+  {
+    "id": 2,
+    "name": "Sample Employee 2",
+    "birthDate": "2000-07-15",
+    "hasCar": false,
+    "address": "Thessaloniki, Greece",
+    "coordinates": { "lat": 40.6401, "lng": 22.9444 },
+    "attribute": { "id": 1, "description": "Senior" }
+  },
+  {
+    "id": 3,
+    "name": "Sample Employee 3",
+    "birthDate": "1990-05-10",
+    "hasCar": true,
+    "address": "Athens, Greece",
+    "coordinates": { "lat": 37.9838, "lng": 23.7275 },
+    "attribute": { "id": 2, "description": "Mid" }
+  },
+  {
+    "id": 4,
+    "name": "Sample Employee 4",
+    "birthDate": "2000-07-15",
+    "hasCar": false,
+    "address": "Thessaloniki, Greece",
+    "coordinates": { "lat": 40.6401, "lng": 22.9444 },
+    "attribute": { "id": 1, "description": "Senior" }
+  }
+]

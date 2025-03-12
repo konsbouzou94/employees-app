@@ -1,0 +1,48 @@
+<!-- Sticky Header -->
+<header class="app-header-container">
+  <img src="assets/icons/app-logo.png" alt="App Logo" class="app-logo">
+  <span class="app-title">{{ title }}</span>
+
+  <!-- Sidebar toggle buttons for small screens -->
+  <button class="sidebar-toggle d-md-none" (click)="toggleLeftSidebar()">Menu</button>
+</header>
+
+<div class="app-layout">
+  <!-- Left Sidebar (Hidden on Mobile, Always Visible on Desktop) -->
+  <nav class="sidebar left-sidebar" [ngClass]="{ 'mobile-hidden': !leftSidebarOpen }">
+    <button class="close-sidebar d-md-none" (click)="toggleLeftSidebar()">✖</button>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/employees">Employees</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/attributes">Attributes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/map">Map</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Right Sidebar For Campaigns News or Upcoming Events(Hidden on Mobile, Always Visible on Desktop) -->
+  <aside class="sidebar right-sidebar mobile-hidden">
+    <button class="close-sidebar d-md-none">✖</button>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt mauris eu diam bibendum, sed accumsan metus lacinia.
+    </p>
+  </aside>
+
+</div>
+
+<!-- Sticky Footer -->
+<footer class="app-footer">
+  <p>&copy; 2025 EmployeesApp - All Rights Reserved</p>
+</footer>

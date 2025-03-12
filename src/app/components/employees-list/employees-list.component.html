@@ -1,0 +1,59 @@
+<div>
+  <div *ngIf="showActions" class="add-record">
+    <button class="btn btn-primary" [routerLink]="['/employees/form']">Add New Employee</button>
+  </div>
+  <ng-container *ngIf="(employees | employeeFilter: searchTerm) as filteredEmployees">
+    <ul *ngIf="filteredEmployees.length > 0; else noEmployees">
+      <li *ngFor="let employee of filteredEmployees" class="employee-container col-md-12" [routerLink]="employeeRoutes[employee.id]">
+        <div class="main-info">
+          <div class="info-row">
+            <label>Name:</label><span>{{ employee.name }}</span>
+          </div>
+          <div class="info-row">
+            <label>DOB:</label><span>{{ employee.birthDate }}</span>
+          </div>
+          <div class="info-row">
+            <label>Owns Car:</label><span>{{ employee.hasCar ? 'Yes' : 'No' }}</span>
+          </div>
+          <div class="info-row">
+            <label>Address:</label><span>{{ employee.address }}</span>
+          </div>
+          <div *ngIf=" employee.coordinates.lat"  class="info-row">
+            <label>Latitude:</label><span>{{ employee.coordinates.lat }}</span>
+          </div>
+          <div *ngIf=" employee.coordinates.lng" class="info-row">
+            <label>Longitude:</label><span>{{ employee.coordinates.lng }}</span>
+          </div>
+          <div *ngIf=" employee.attribute" class="info-row">
+            <label>Attribute Description:</label>
+            <span>{{ employee.attribute.description }}</span>
+          </div>
+        </div>
+
+        <div *ngIf="showActions" class="actions">
+          <button class="btn btn-danger btn-sm" (click)="onDeleteEmployee(employee); $event.stopPropagation();">
+            Delete Employee
+          </button>
+        </div>
+      </li>
+    </ul>
+  </ng-container>
+
+  <!-- Show message if no employees are found -->
+  <ng-template #noEmployees>
+    <div>{{ emptyRecordsMessage }}</div>
+  </ng-template>
+</div>
+
+
+<app-global-confirmation-modal
+  [title]="'Delete Employee'"
+  [description]="'Are you sure you want to delete this employee?'"
+  [buttons]="[
+    { text: 'Cancel', action: closeModal },
+    { text: 'Submit', action: deleteEmployee }
+  ]"
+  [isVisible]="isModalVisible"
+  (closeModal)="closeModal()">
+</app-global-confirmation-modal>
+

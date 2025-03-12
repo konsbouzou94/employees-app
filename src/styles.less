@@ -1,0 +1,97 @@
+@import 'styles/global.less';
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevents whole page scrolling */
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Ensures it doesn't exceed viewport */
+  width: 100vw;
+  overflow: hidden; /* Stops unwanted scrolling */
+}
+
+.page-header{
+  border-bottom: @page-header-border ;
+  h1{
+    .page-title-font();
+  }
+}
+.page-main-container{
+  margin: 20px;
+  h5{
+    color: @main-font-color;
+    font-weight: @normal-weight;
+    @media (max-width: 1064px) {
+      font-size:@font-size-xregular;
+    }
+  }
+}
+
+.page-inner-container{
+  max-width: 600px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+.main-info {
+  //border: 1px solid #ddd;
+  border-radius: 24px;
+  flex-grow: 1;
+  padding: 12px;
+  background: white;
+  transition: box-shadow 0.3s ease-in-out;
+  &:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  span{
+    word-break: break-word;
+  }
+  .text{
+    span{
+      color: @main-light-font-color;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .main-info span {
+    font-size: 14px;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 10px;
+}
+
+.form-buttons{
+  display: flex;
+  gap: 10px;
+}
+
+.add-record{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 20px;
+  button{
+    max-width: 200px;
+  }
+}
+
+label{
+  .label-font();
+}
+
+.helper-error{
+  color: red;
+  font-size: @font-size-small;
+}

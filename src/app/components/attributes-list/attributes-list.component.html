@@ -1,0 +1,31 @@
+<div>
+  <div class="add-record">
+    <button class="btn btn-primary" [routerLink]="['/attributes/form']">Add New Attribute</button>
+  </div>
+  <ng-container *ngIf="attributes.length > 0; else noAttributes" >
+    <ul>
+      <li *ngFor="let attribute of attributes" class="attribute-container" [routerLink]="['/attributes/form', attribute.id]">
+        <div class="main-info">
+          <span>{{ attribute.description }}</span>
+        </div>
+        <div class="actions">
+          <button class="btn btn-danger btn-sm" (click)="onDeleteAttribute(attribute); $event.stopPropagation();">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </ng-container>
+  <ng-template #noAttributes>
+    <div>{{ emptyRecordsMessage }}</div>
+  </ng-template>
+</div>
+
+<app-global-confirmation-modal
+  [title]="'Delete Attribute'"
+  [description]="'Are you sure you want to delete this attribute?'"
+  [buttons]="[
+    { text: 'Cancel', action: closeModal },
+    { text: 'Delete', action: deleteAttribute }
+  ]"
+  [isVisible]="isModalVisible"
+  (closeModal)="closeModal()">
+</app-global-confirmation-modal>

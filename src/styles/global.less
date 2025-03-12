@@ -1,0 +1,90 @@
+//Mixins Start
+.app-title-font{
+  font-size: @font-size-large;
+  color: @main-font-color;
+  font-weight: @bold-weight;
+  @media (max-width: 1064px) {
+    font-size:@font-size-medium;
+  }
+}
+
+.page-title-font{
+  font-size: @font-size-medium;
+  color: @main-font-color;
+  font-weight: @bold-weight;
+  @media (max-width: 1064px) {
+    font-size:@font-size-xregular;
+  }
+}
+
+.label-font{
+  font-size: @font-size-regular;
+  font-weight: @bold-weight;
+  @media (max-width: 768px) {
+    font-size: @font-size-small;
+  }
+}
+
+.nav-item{
+  background-color: @main--info-container-background-color;
+  border-radius: 12px;
+  margin-bottom: 5px;
+  .nav-link{
+    font-size: @font-size-xregular;
+    color: @main-font-color;
+    font-weight: @normal-weight;
+  }
+  &:hover{
+    background-color: @main--info-container-background-color-hover;
+    .nav-link{
+      font-weight: @bold-weight;
+    }
+  }
+
+  @media (max-width: 1064px) {
+    .nav-link{
+      font-size: @font-size-regular;
+    }
+  }
+}
+//Mixins End
+
+//Variables Start
+
+//Colors
+@main-color: #007bff;
+@title-color: #00008BFF;
+@main--info-container-background-color: #f8f9fa;
+@main--info-container-background-color-hover: #e2eaf1;
+@page-header-border: 2px solid #f8f9fa;
+//Colors
+
+//Font-size
+@font-size-xsmall: 12px;
+@font-size-small: 14px;
+@font-size-regular: 16px;
+@font-size-xregular: 20px;
+@font-size-medium: 24px;
+@font-size-large: 32px;
+@font-size-xlarge: 40px;
+@font-size-xxlarge: 50px;
+//Font-size
+
+//font-colors
+@main-font-color: #212121;
+@main-light-font-color: #666666;
+//font-colors
+
+//font-weights
+@normal-weight: 400;
+@bold-weight: 700;
+//font-weights
+
+//Variables End
+
+
+.form-check-input {
+  width: 50px;
+  height: 25px;
+  cursor: pointer;
+}

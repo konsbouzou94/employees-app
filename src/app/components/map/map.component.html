@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h1>Map View And Routing</h1>
+</div>
+
+<div class="page-main-container">
+<!--  In case no employee is selected during component's initialization disable the Create Route button and show respective message-->
+  <div class="add-record">
+    <button [disabled]="!selectedEmployee" class="btn btn-primary" (click)="createRoute()">Create Route</button>
+    <span *ngIf="!selectedEmployee" class="helper-error">You have to select an employee as start point and then can create a route</span>
+  </div>
+
+
+  <google-map
+    height="500px"
+    width="100%"
+    [zoom]="12"
+    [center]="center">
+
+    <map-marker
+      *ngFor="let employee of employees"
+      [position]="employee.coordinates"
+      [options]="markerOptions"
+      [title]="employee.name"
+      [icon]="employee.id === selectedEmployee?.id ? 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' : 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'">
+    </map-marker>
+    <map-polyline [path]="polylinePath"></map-polyline>
+
+  </google-map>
+
+  <button (click)="createRoute()">
+
+  </button>
+
+</div>

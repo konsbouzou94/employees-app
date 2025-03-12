@@ -1,0 +1,128 @@
+<div class="page-header">
+  <h1>{{ isEditMode ? 'Modify Existing Employee' : 'Create New Employee' }}</h1>
+</div>
+
+<div class="page-main-container">
+  <div class="page-inner-container">
+    <form #employeeForm="ngForm" class="employee-form-container" (submit)="saveEmployee(employeeForm)">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          [(ngModel)]="employee.name"
+          #nameField="ngModel"
+          class="form-control"
+          required
+          minlength="3"
+          maxlength="100"
+        >
+        <span class="helper-error" *ngIf="nameField.invalid && nameField.touched">
+          <span *ngIf="nameField.errors?.['required']">Name is required.</span>
+          <span *ngIf="nameField.errors?.['minlength']">Minimum 3 characters required.</span>
+          <span *ngIf="nameField.errors?.['maxlength']">Maximum 100 characters allowed.</span>
+        </span>
+      </div>
+
+
+      <div class="form-group">
+        <label for="birthDate">Birth Date:</label>
+        <input type="date" id="birthDate" name="birthDate" [(ngModel)]="employee.birthDate" #birthDateField="ngModel" class="form-control" required>
+        <span class="helper-error" *ngIf="birthDateField.invalid && birthDateField.touched">Birth Date is required.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="hasCar">Own a Car:</label>
+        <div class="form-check form-switch">
+          <input type="checkbox" id="hasCar" name="hasCar" class="form-check-input form-control" [(ngModel)]="employee.hasCar">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Actual Address:</label>
+        <input
+          type="text"
+          id="address"
+          name="address"
+          [(ngModel)]="employee.address"
+          #addressField="ngModel"
+          class="form-control"
+          required
+          minlength="10"
+          maxlength="100"
+        >
+        <span class="helper-error" *ngIf="addressField.invalid && addressField.touched">
+          <span *ngIf="addressField.errors?.['required']">Address is required.</span>
+          <span *ngIf="addressField.errors?.['minlength']">Minimum 10 characters required.</span>
+          <span *ngIf="addressField.errors?.['maxlength']">Maximum 100 characters allowed.</span>
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label>Latitude:</label>
+        <input
+          type="number"
+          id="lat"
+          name="lat"
+          [(ngModel)]="employee.coordinates.lat"
+          #latField="ngModel"
+          class="form-control"
+          required
+          min="-90"
+          max="90"
+          step="0.000001"
+        >
+        <span class="helper-error" *ngIf="latField.invalid && latField.touched">
+          <span *ngIf="latField.errors?.['required']">Latitude is required.</span>
+          <span *ngIf="latField.errors?.['min'] || latField.errors?.['max']">Latitude must be between -90 and 90.</span>
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label>Longitude:</label>
+        <input
+          type="number"
+          id="lng"
+          name="lng"
+          [(ngModel)]="employee.coordinates.lng"
+          #lngField="ngModel"
+          class="form-control"
+          required
+          min="-180"
+          max="180"
+          step="0.000001"
+        >
+        <span class="helper-error" *ngIf="lngField.invalid && lngField.touched">
+          <span *ngIf="lngField.errors?.['required']">Longitude is required.</span>
+          <span *ngIf="lngField.errors?.['min'] || lngField.errors?.['max']">Longitude must be between -180 and 180.</span>
+        </span>
+      </div>
+
+
+      <div class="form-group">
+        <label for="attribute">Attribute:</label>
+        <select
+          id="attribute"
+          name="attribute"
+          [(ngModel)]="employee.attribute"
+          #attributeField="ngModel"
+          class="form-control"
+          required
+        >
+          <option value="" disabled selected>Select an attribute</option>
+          <option *ngFor="let attr of attributes" [ngValue]="attr">{{ attr.description }}</option>
+        </select>
+
+        <span class="helper-error" *ngIf="attributeField.invalid && attributeField.touched">
+          <span *ngIf="attributeField.errors?.['required']">Please select an attribute.</span>
+        </span>
+      </div>
+
+      <div class="form-buttons">
+        <button type="button" class="btn btn-secondary" routerLink="/employees">Cancel</button>
+        <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Save Changes' : 'Add Employee' }}</button>
+      </div>
+    </form>
+  </div>
+</div>

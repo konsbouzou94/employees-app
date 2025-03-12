@@ -1,0 +1,108 @@
+@import '../styles/global.less';
+
+.app-header-container {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #D5F0FD;
+  color: black;
+  padding: 10px;
+  display: flex;
+  gap:20px;
+  align-items: center;
+  z-index: 1000;
+  border-bottom: 2px solid #f8f9fa
+}
+
+.app-layout {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 40px - 40px);
+  width: 100vw;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.app-title{
+  .app-title-font();
+}
+
+.app-logo{
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+/* Default Sidebar (Always Visible on Desktop) */
+.sidebar {
+  width: 220px;
+  height: calc(100vh - 60px);
+  background-color: #8AC6F2;
+  padding: 15px;
+  overflow-y: auto;
+  &.right-sidebar{
+    border-radius: 12px 0 0 0;
+  }
+  &.left-sidebar{
+    border-radius: 0 12px 0 0;
+  }
+}
+
+/* Hide sidebars on small screens by default */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    height: 100%;
+    z-index: 1000;
+  }
+
+  .mobile-hidden {
+    display: none !important;
+  }
+
+}
+@media (max-width: 1064px) {
+  .sidebar{
+    width: 160px;
+  }
+}
+
+/* Sidebar toggle buttons for mobile */
+.sidebar-toggle {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Close button inside the sidebar */
+.close-sidebar {
+  background: transparent;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Sticky Footer */
+.app-footer {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
